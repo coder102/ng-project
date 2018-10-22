@@ -1,0 +1,48 @@
+<div class="titles">
+
+    <h2>Все нишы</h2>
+
+    <h2>Выбранные нишы</h2>
+
+</div>
+
+<div class="clear"></div>
+
+<div class="list list--third">
+
+    <ul>
+        <li class="list__item"
+            ng-repeat="item in items"
+            ng-click="addItem(item.name)"
+            ng-class="{'is-active': resultItems.includes(item.name)}">{{item.name}}</li>
+    </ul>
+
+    <div class="clear"></div>
+
+</div>
+
+<div class="list-control list--third">
+    <div class="list-control__container">
+
+        <label class="list-control__limit" for="limit">Генерация рандомных ниш</label>
+
+        <div class="list-control__btns">
+            <a class="btn btn--circle" ng-class="{'is-active': generateValue === 1}" ng-click="generateValue = 1">1</a>
+            <a class="btn btn--circle" ng-class="{'is-active': generateValue === 5}" ng-click="generateValue = 5">5</a>
+            <a class="btn btn--circle" ng-class="{'is-active': generateValue === 10}" ng-click="generateValue = 10">10</a>
+            <a class="btn btn--circle" ng-class="{'is-active': generateValue === 20}" ng-click="generateValue = 20">20</a>
+        </div>
+
+        <button class="btn list-control__btn" ng-click="generateItems(generateValue)">Сгенерировать {{generateValue}} {{generateValue === 1 ? 'нишу' : 'ниш'}}<i class="fa fa-arrow-right"></i></button>
+
+    </div>
+</div>
+
+<div class="list-result list--third">
+    <ul>
+        <li class="list-result__item" ng-repeat="item in resultItems">
+            <a href="https://www.google.co.uk/search?q={{item}}+бизнес" target="_blank">{{item}}</a>
+            <i class="list-result__item__delete fa fa-trash" ng-click="deleteItem(item)"></i>
+        </li>
+    </ul>
+</div>
